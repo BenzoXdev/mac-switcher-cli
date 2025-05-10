@@ -1,5 +1,13 @@
 ### Ultimate MAC Switcher CLI
 
+
+<p align="center">
+  <img src="./mac-switcher.png" alt="Aperçu de l’outil" width="600"/>
+</p>
+
+<h1 align="center">MAC Switcher CLI</h1>
+<p align="center"><strong>By BenzoXdev</strong></p>
+<p align="center">The ultimate tool to easily change your MAC address.</p>
  
 
 
