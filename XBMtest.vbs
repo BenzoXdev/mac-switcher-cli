@@ -255,3 +255,4 @@ fso.DeleteFile mutexFile
 WshShell.RegDelete regMutex
 SendToDiscord "Clean", prefix & " Mutex nettoyé.", 8421504
 On Error Goto 0
+
