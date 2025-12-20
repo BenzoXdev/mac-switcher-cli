@@ -366,7 +366,6 @@ if (-not (Test-Admin)) {
 # Define the reg paths
 $baseKey = "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender"
 $realTimeProtectionKey = "$baseKey\Real-Time Protection"
-$firewallPath = "HKLM:\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy"
 
 # First, Disable Windows Recovery Environment (WinRE)
 reagentc /disable
@@ -399,13 +398,7 @@ Set-RegistryProperties -path $realTimeProtectionKey -properties @{
     "DisableScanOnRealtimeEnable" = 1
     "DisableScriptScanning" = 1
     "SubmitSamplesConsent" = 2
-    "DisableNetworkProtection" = 1
 }
-
-# Disable Windows Firewall
-Set-RegistryProperties -path "$firewallPath\DomainProfile" -properties @{"EnableFirewall" = 0; "DisableNotifications" = 1}
-Set-RegistryProperties -path "$firewallPath\StandardProfile" -properties @{"EnableFirewall" = 0; "DisableNotifications" = 1}
-Set-RegistryProperties -path "$firewallPath\PublicProfile" -properties @{"EnableFirewall" = 0; "DisableNotifications" = 1}
 
 # Disable Windows Defender SmartScreen
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" -Name "SmartScreenEnabled" -Value "Off" -Type String -Force
@@ -426,9 +419,6 @@ Set-RegistryProperties -path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Po
 # Disable Command Prompt
 Set-RegistryProperties -path "HKCU:\Software\Policies\Microsoft\Windows\System" -properties @{"DisableCMD" = 1}
 
-# Disable Remote Desktop Connections
-Set-RegistryProperties -path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server" -properties @{"fDenyTSConnections" = 1}
-
 # Disable User Account Control (UAC)
 Set-RegistryProperties -path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -properties @{"EnableLUA" = 0}
 
@@ -438,14 +428,8 @@ Set-RegistryProperties -path "HKLM:\SYSTEM\CurrentControlSet\Services\wscsvc" -p
 # Disable Error Reporting to Microsoft
 Set-RegistryProperties -path "HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting" -properties @{"Disabled" = 1}
 
-# Disable Remote Assistance Connections
-Set-RegistryProperties -path "HKLM:\SYSTEM\CurrentControlSet\Control\Remote Assistance" -properties @{"fAllowToGetHelp" = 0}
-
 # Disable the service responsible for troubleshooting Windows Update
 Set-RegistryProperties -path "HKLM:\SYSTEM\CurrentControlSet\Services\WaaSMedicSvc" -properties @{"Start" = 4}
-
-# Disable Background Intelligent Transfer Service (BITS), used by Windows Update and other applications for file transfers
-Set-RegistryProperties -path "HKLM:\SYSTEM\CurrentControlSet\Services\BITS" -properties @{"Start" = 4}
 
 # Disable Windows Script Host, preventing scripts from running
 Set-RegistryProperties -path "HKLM:\Software\Microsoft\Windows Script Host\Settings" -properties @{"Enabled" = 0}
